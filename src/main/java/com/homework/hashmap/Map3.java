@@ -1,6 +1,8 @@
 package com.homework.hashmap;
 
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  *В классе Map3 объявлено поле grades типа HashMap<String, Double>, где ключ — имя и фамилия студента, а значение - его средняя оценка.
@@ -32,5 +34,10 @@ public class Map3 {
 
   public static void printStudentsInfo() {
     //напишите тут ваш код
+    for (String a: grades.keySet()) {
+      Double s = grades.get(a);
+      System.out.println(a + " --> " + s);
+
+    }
   }
 }
