@@ -18,18 +18,26 @@ import java.util.Iterator;
 public class Set4 {
 
   public static void printList(ArrayList<String> words) {
-    for (Iterator<String> iterator = words.iterator(); iterator.hasNext(); ) {
-      String word = iterator.next();
-      System.out.println(word);
+    for ( String a: words) {
+      System.out.println(a);
+
     }
+//    for (Iterator<String> iterator = words.iterator(); iterator.hasNext(); ) {
+//      String word = iterator.next();
+//      System.out.println(word);
+
+//    }
   }
 
   public static void printHashSet(HashSet<String> words) {
-    Iterator<String> iterator = words.iterator();
-    while (iterator.hasNext()) {
-      String word = iterator.next();
-      System.out.println(word);
+    for (String str: words) {
+      System.out.println(str);
     }
+//    Iterator<String> iterator = words.iterator();
+//    while (iterator.hasNext()) {
+//      String word = iterator.next();
+//      System.out.println(word);
+//    }
   }
 
   public static void main(String[] args) {
