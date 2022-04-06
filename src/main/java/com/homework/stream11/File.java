@@ -1,27 +1,46 @@
 package com.homework.stream11;
 
-/**
- *
- Напиши программу, которая будет считывать с клавиатуры строки, и если данная строка — это путь к существующему файлу,
- выводить в консоли "<введенная строка> - это файл". Если путь к существующей директории, выводить в консоли "<введенная строка> - это директория".
- Если строка не является путем к файлу или директории, то выходим из программы. Треугольные скобки и кавычки выводить не нужно.
- Для проверки файлов и директорий используй методы isRegularFile() и isDirectory() класса Files.
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Scanner;
 
- Пример вывода:
- C:\home\text.txt - это файл
- C:\home\ - это директория
- Требования:
- •	Программа должна считывать из консоли пути к файлам/директориям до тех пор, пока не будет введен некорректный путь.
- •	Программа должна выводить в консоли информацию о введенном пути согласно условию.
- •	Для проверки файлов и директорий должны быть использованы методы isRegularFile() и isDirectory() класса Files.
- •	Не используй следующие классы: File, FileInputStream, FileOutputStream, FileReader, FileWriter пакета java.io.
+/**
+ * Напиши программу, которая будет считывать с клавиатуры строки, и если данная строка — это путь к существующему файлу,
+ * выводить в консоли "<введенная строка> - это файл". Если путь к существующей директории, выводить в консоли "<введенная строка> - это директория".
+ * Если строка не является путем к файлу или директории, то выходим из программы. Треугольные скобки и кавычки выводить не нужно.
+ * Для проверки файлов и директорий используй методы isRegularFile() и isDirectory() класса Files.
+ * <p>
+ * Пример вывода:
+ * C:\home\text.txt - это файл
+ * C:\home\ - это директория
+ * Требования:
+ * •	Программа должна считывать из консоли пути к файлам/директориям до тех пор, пока не будет введен некорректный путь.
+ * •	Программа должна выводить в консоли информацию о введенном пути согласно условию.
+ * •	Для проверки файлов и директорий должны быть использованы методы isRegularFile() и isDirectory() класса Files.
+ * •	Не используй следующие классы: File, FileInputStream, FileOutputStream, FileReader, FileWriter пакета java.io.
  */
 public class File {
 
-  private static final String THIS_IS_FILE = " - это файл";
-  private static final String THIS_IS_DIR = " - это директория";
+    private static final String THIS_IS_FILE = " - это файл";
+    private static final String THIS_IS_DIR = " - это директория";
 
-  public static void main(String[] args) {
-    //напишите тут ваш код
-  }
+    public static void main(String[] args) {
+        //напишите тут ваш код
+        try (Scanner s = new Scanner(System.in)) {
+
+            while (true) {
+                String pth = s.nextLine();
+                // Path path = Path.of(s.nextLine());
+                String pathPrint = null;
+                if (Files.isRegularFile(Path.of(pth))) {
+                    pathPrint = pth + THIS_IS_FILE;
+                } else if (Files.isDirectory(Path.of(pth))) {
+                    pathPrint = pth + THIS_IS_DIR;
+                } else {
+                    break;
+                }
+                System.out.println(pathPrint);
+            }
+        }
+    }
 }
