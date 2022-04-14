@@ -32,6 +32,7 @@ public class File1 {
             Files.move(filePath, fileNewPath);
         } else if (Files.exists(fileNewPath)) {
             Files.delete(filePath);
-        } scanner.close();
+        }
+        scanner.close();
     }
 }

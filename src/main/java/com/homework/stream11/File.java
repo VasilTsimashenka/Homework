@@ -26,20 +26,18 @@ public class File {
 
     public static void main(String[] args) {
         //напишите тут ваш код
-        try (Scanner s = new Scanner(System.in)) {
-
-            while (true) {
-                String pth = s.nextLine();
-                // Path path = Path.of(s.nextLine());
-                String pathPrint = null;
-                if (Files.isRegularFile(Path.of(pth))) {
-                    pathPrint = pth + THIS_IS_FILE;
-                } else if (Files.isDirectory(Path.of(pth))) {
-                    pathPrint = pth + THIS_IS_DIR;
-                } else {
-                    break;
-                }
-                System.out.println(pathPrint);
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String str = scanner.nextLine();
+            if (str.isEmpty()) {
+                break;
+            }
+            if (Files.isRegularFile(Path.of(str))) {
+                System.out.println(str + THIS_IS_FILE);
+            } else if (Files.isDirectory(Path.of(str))) {
+                System.out.println(str + THIS_IS_DIR);
+            } else {
+                break;
             }
         }
     }

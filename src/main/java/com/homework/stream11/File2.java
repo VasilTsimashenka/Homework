@@ -1,6 +1,8 @@
 package com.homework.stream11;
 
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
@@ -36,5 +38,16 @@ public class File2 {
     Scanner scanner = new Scanner(System.in);
     Path directory = Path.of(scanner.nextLine());
     //напишите тут ваш код
+    try (DirectoryStream<Path> paths = Files.newDirectoryStream(directory)) {
+      for (Path p: paths) {
+        if (Files.isRegularFile(p)) {
+          System.out.println(p.toString() + THIS_IS_FILE);
+        } else if (Files.isDirectory(p)) {
+          System.out.println(p.toString() + THIS_IS_DIR);
+        }
+        
+      }
+
+    }
   }
 }
