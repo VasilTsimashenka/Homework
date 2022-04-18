@@ -1,6 +1,8 @@
 package com.homework.stream11;
 
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
@@ -25,5 +27,14 @@ public class File3 {
     Path sourceDirectory = Path.of(scanner.nextLine());
     Path targetDirectory = Path.of(scanner.nextLine());
     //напишите тут ваш код
+    try (DirectoryStream<Path> pat = Files.newDirectoryStream(sourceDirectory)) {
+      for (Path path: pat) {
+        if (Files.isRegularFile(path)) {
+          Path resolve = targetDirectory.resolve(path.getFileName());
+          Files.copy(path, resolve);
+        }
+
+      }
+    }
   }
 }

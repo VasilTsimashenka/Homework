@@ -1,5 +1,12 @@
 package com.homework.stream11;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
 /**
  * Напиши программу, которая считывает с консоли путь к файлу1 и путь к файлу2.
  * Далее все байты из файла1 записывает в файл2, но при этом меняет их местами по такому принципу: первый со вторым, третий с четвертым, и т.д.
@@ -15,8 +22,25 @@ package com.homework.stream11;
 
 public class Stream1 {
 
-  public static void main(String[] args) {
-
-  }
+    public static void main(String[] args) throws IOException {
+        try (Scanner scanner = new Scanner(System.in);
+             InputStream inputStream = Files.newInputStream(Paths.get(scanner.nextLine()));
+             OutputStream outputStream = Files.newOutputStream(Paths.get(scanner.nextLine()))
+        ) {
+            byte[] bytesIn = inputStream.readAllBytes();
+            byte[] bytesOut = new byte[bytesIn.length];
+            for (int i = 0; i < bytesIn.length; i++) {
+                if (i < bytesIn.length - 1) {
+                    bytesOut[i] = bytesIn[i + 1];
+                    bytesOut[i + 1] = bytesIn[i];
+                } else {
+                    bytesOut[i] = bytesIn[i];
+                }
+            }
+            outputStream.write(bytesOut);
+        } catch (IOException e) {
+            System.out.println("Something went wrong : " + e);
+        }
+    }
 }
 

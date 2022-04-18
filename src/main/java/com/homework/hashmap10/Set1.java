@@ -1,6 +1,8 @@
 package com.homework.hashmap10;
 
+import java.util.Collection;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * В классе Set1 есть метод arrayToHashSet(String[]), который должен из переданного массива вернуть HashSet<String> с теми же элементами.
@@ -25,6 +27,11 @@ public class Set1 {
   }
 
   public static HashSet<String> arrayToHashSet(String[] strings) {
-    return null;//напишите тут ваш код
+    HashSet<String> str = new HashSet<String>();
+//    for (int i = 0; i < strings.length; i++) {
+
+//    }
+
+    return  str;
   }
 }
