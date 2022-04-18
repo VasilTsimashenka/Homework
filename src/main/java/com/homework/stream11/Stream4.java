@@ -19,9 +19,9 @@ public class Stream4 {
 
   public static void main(String[] args) {
     try (InputStream stream = System.in;
-        InputStreamReader inputStreamReader = new InputStreamReader(stream);
-        BufferedReader reader = new BufferedReader(inputStreamReader)) {
-      String line = reader.readLine();
+         InputStreamReader reader = new InputStreamReader(stream);
+         BufferedReader buff = new BufferedReader(reader)) {
+      String line = buff.readLine();
       char[] chars = line.toCharArray();
       for (int i = 0; i < chars.length; i++) {
         if (i % 2 == 1) {

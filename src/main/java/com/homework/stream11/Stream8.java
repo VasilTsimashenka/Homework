@@ -13,13 +13,13 @@ import java.util.Scanner;
  * который записывает полученную строку в поток stream.
  * Твоя задача — в методе main(String[]) развернуть переданную строку с помощью поля outputStream (то есть,
  * outputStream должен хранить в себе перевернутую строку) и вывести в консоли.
- *
+ * <p>
  * Пример:
  * Входные данные:
  * it's a text for testing
  * Вывод:
  * gnitset rof txet a s'ti
- *
+ * <p>
  * Метод printSomething(String) не изменяй.
  * Требования:
  * •	Программа должна использовать метод printSomething().
@@ -29,21 +29,21 @@ import java.util.Scanner;
  */
 public class Stream8 {
 
-  public static ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-  public static PrintStream stream = new PrintStream(outputStream);
+    public static ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    public static PrintStream stream = new PrintStream(outputStream);
 
-  public static void main(String[] args) throws IOException {
-    Scanner scanner = new Scanner(System.in);
-    printSomething(scanner.nextLine());
-    String result = outputStream.toString();
-    outputStream.reset();
-    StringBuilder stringBuilder = new StringBuilder(result);
-    stringBuilder = stringBuilder.reverse();
-    printSomething(stringBuilder.toString());
-    System.out.println(outputStream.toString());
-  }
+    public static void main(String[] args) throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        printSomething(scanner.nextLine());
+        String result = outputStream.toString();
+        outputStream.reset();
+        StringBuilder stringBuilder = new StringBuilder(result);
+        String reverse = stringBuilder.reverse().toString();
+        printSomething(reverse);
+        System.out.println(outputStream);
+    }
 
-  public static void printSomething(String str) {
-    stream.print(str);
-  }
+    public static void printSomething(String str) {
+        stream.print(str);
+    }
 }
